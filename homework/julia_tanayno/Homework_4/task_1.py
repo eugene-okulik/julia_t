@@ -8,7 +8,7 @@ my_dict['list'].append('six')
 my_dict['list'].pop(1)
 
 # добавляем элемент в словарь dict с ключом ('i am a tuple'), удаляем элемент
-my_dict['dict']['i am a tuple'] = 'hello'
+my_dict['dict'][('i am a tuple',)] = 'hello'
 my_dict['dict'].pop('Austria')
 
 # добавляем новый элемент в set, удаляем элемент
