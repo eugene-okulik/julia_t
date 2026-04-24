@@ -1,4 +1,10 @@
-my_dict = {'tuple': (1, 2, 3, 4, 5), 'list': ['one', 'two', 'three', 'four', 'five'], 'dict': {'Germany': 'Berlin', 'Austria': 'Viena', 'Netherlands': 'Amsterdam', 'Belgium': 'Brussel', 'France': 'Paris'}, 'set': {2.21, 3.14, 9.8, 14.2, 7.7}}
+my_dict = {
+    'tuple': (1, 2, 3, 4, 5), 'list': ['one', 'two', 'three', 'four', 'five'], 
+    'dict': {
+        'Germany': 'Berlin', 'Austria': 'Viena', 'Netherlands': 'Amsterdam', 'Belgium': 'Brussel', 'France': 'Paris'
+        }, 
+        'set': {2.21, 3.14, 9.8, 14.2, 7.7}
+    }
 
 # выводим на экран последний элемент кортежа tuple
 print(my_dict['tuple'][-1])
