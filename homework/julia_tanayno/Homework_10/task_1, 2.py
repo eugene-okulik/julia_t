@@ -1,5 +1,6 @@
 # task_1
 
+
 def finish_me(func):
 
     def wrapper(*args):
@@ -12,6 +13,7 @@ def finish_me(func):
 @finish_me
 def example(text):
     print(text)
+
 
 example("print me1")
 
@@ -30,9 +32,11 @@ def repeat_me(func):
 def example(text):
     print(text)
 
-example("print me2", count = 2)
+
+example("print me2", count=2)
 
 # task_2.2
+
 
 def repeat_me(count):
     def decorator(func):
@@ -43,8 +47,9 @@ def repeat_me(count):
     return decorator
 
 
-@repeat_me(count = 2)
+@repeat_me(count=2)
 def example(text):
     print(text)
+
 
 example("print me3")
