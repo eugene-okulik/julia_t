@@ -29,7 +29,7 @@ class SchoolBook(Book):
             subject,
             group,
             has_tasks
-        ):
+    ):
         super().__init__(title, author, number_of_pages, isbn, is_reserved)
         self.subject = subject
         self.group = group
