@@ -2,7 +2,6 @@ class Book:
     is_text = 'да'
     pages_material = 'бумага'
 
-
     def __init__(self, title, author, number_of_pages, isbn, is_reserved):
         self.title = title
         self.author = author
@@ -17,7 +16,7 @@ class Book:
             f'Страниц: {self.number_of_pages}, '
             f'Материал: {self.pages_material}'
             f'{", зарезервирована" if self.is_reserved else ""}'
-            )
+        )
 
 
 class SchoolBook(Book):
@@ -30,7 +29,7 @@ class SchoolBook(Book):
             subject,
             group,
             has_tasks
-            ):
+        ):
         super().__init__(title, author, number_of_pages, isbn, is_reserved)
         self.subject = subject
         self.group = group
@@ -44,7 +43,7 @@ class SchoolBook(Book):
             f'Предмет: {self.subject}, '
             f'Класс: {self.group}'
             f'{", зарезервирована" if self.is_reserved else ""}'
-            )
+        )
 
 
 book_1 = Book(
