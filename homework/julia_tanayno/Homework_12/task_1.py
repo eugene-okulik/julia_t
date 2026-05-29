@@ -12,7 +12,7 @@ class Flowers:
     def __str__(self):
         return f'{self.title}: цена {self.price}, цвет {self.colour}'
 
-    
+
 class Rose(Flowers):
     def __init__(self, title, colour, price, stem_length, avg_lifespan, has_thorns):
         super().__init__(title, colour, price, stem_length, avg_lifespan)
@@ -28,7 +28,7 @@ class Tulip(Flowers):
 class Gerbera(Flowers):
     def __init__(self, title, colour, price, stem_length, avg_lifespan):
         super().__init__(title, colour, price, stem_length, avg_lifespan)
-    
+
 
 rose1 = Rose('rose', 'red', 100, 70, 7, True)
 tulip1 = Tulip('tulip', 'yellow', 70, 40, 5, True)
@@ -50,21 +50,21 @@ class Bouquet:
         for flower in self.bouquet:
             price_of_the_bouquet = price_of_the_bouquet + flower.price
         return price_of_the_bouquet
-    
+
     def when_withers(self):
         average_lifespan = 0
         for flower in self.bouquet:
             average_lifespan = average_lifespan + flower.avg_lifespan
         return round(average_lifespan / len(self.bouquet))
-    
+
     def sort_by_price(self):
-        self.bouquet.sort(key = lambda flower : flower.price)
+        self.bouquet.sort(key=lambda flower: flower.price)
         return self.bouquet
-    
+
     def sort_by_colour(self):
-        self.bouquet.sort(key = lambda flower : flower.colour)
+        self.bouquet.sort(key=lambda flower: flower.colour)
         return self.bouquet
-    
+
     def search_by_colour(self, colour):
         flower_list = []
         for flower in self.bouquet:
@@ -77,7 +77,7 @@ class Bouquet:
         for flower in self.bouquet:
             lines.append(str(flower))
         return "\n".join(lines)
-       
+
 
 bouquet1 = Bouquet()
 
