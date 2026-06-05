@@ -1,0 +1,55 @@
+# Создайте студента (student)
+INSERT INTO students (name, second_name) VALUES ('Remco', 'Vasserman')
+
+# Создайте несколько книг (books) и укажите, что ваш созданный студент взял их
+INSERT INTO books (title, taken_by_student_id) VALUES ('My Python', 22967)
+INSERT INTO books (title, taken_by_student_id) VALUES ('My Java', 22967)
+INSERT INTO books (title, taken_by_student_id) VALUES ('My Ruby', 22967)
+
+# Создайте группу (group) и определите своего студента туда
+INSERT INTO `groups` (title, start_date, end_date) 
+VALUES ('346', 'oct 2026', 'dec 2026')
+UPDATE students SET group_id = 22810 WHERE id = 22967
+
+# Создайте несколько учебных предметов (subjects)
+INSERT INTO subjects (title) VALUES ('Математика')
+INSERT INTO subjects (title) VALUES ('Геометрия')
+
+# Создайте по два занятия для каждого предмета (lessons)
+INSERT INTO lessons (title, subject_id) VALUES ('Цифры', 22991)
+INSERT INTO lessons (title, subject_id) VALUES ('Числа', 22991)
+INSERT INTO lessons (title, subject_id) VALUES ('Катеты', 22992)
+INSERT INTO lessons (title, subject_id) VALUES ('Гипотенузы', 22992)
+
+# Поставьте своему студенту оценки (marks) для всех созданных вами занятий
+INSERT INTO marks (value, lesson_id, student_id) VALUES (5, 76296, 22967)
+INSERT INTO marks (value, lesson_id, student_id) VALUES (4, 76297, 22967)
+INSERT INTO marks (value, lesson_id, student_id) VALUES (4, 76298, 22967)
+INSERT INTO marks (value, lesson_id, student_id) VALUES (5, 76299, 22967)
+
+# Получите информацию из базы данных:
+# Все оценки студента
+SELECT * from marks WHERE student_id = 22967
+
+# Все книги, которые находятся у студента
+SELECT * from books WHERE taken_by_student_id = 22967
+
+# Для вашего студента выведите всё, что о нем есть в базе: 
+# группа, книги, оценки с названиями занятий и предметов 
+# (всё одним запросом с использованием Join)
+
+SELECT s.name, s.second_name, g.title as group_title, 
+b.title as book_title, sub.title as subject_title, 
+l.title as lesson_title, m.value as mark
+FROM students s
+LEFT JOIN `groups` g
+ON s.group_id = g.id
+LEFT JOIN books b
+ON s.id = b.taken_by_student_id
+LEFT JOIN marks m
+ON s.id = m.student_id
+LEFT JOIN lessons l
+ON m.lesson_id = l.id
+LEFT JOIN subjects sub
+ON l.subject_id = sub.id
+WHERE s.id = 22967
