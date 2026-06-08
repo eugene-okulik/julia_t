@@ -1,11 +1,11 @@
 import mysql.connector as mysql
 
 db = mysql.connect(
-    user = 'st-onl',
-    passwd = 'AVNS_tegPDkI5BlB2lW5eASC',
-    host = 'db-mysql-fra1-09136-do-user-7651996-0.b.db.ondigitalocean.com',
-    port = 25060,
-    database = 'st-onl'
+    user='st-onl',
+    passwd='AVNS_tegPDkI5BlB2lW5eASC',
+    host='db-mysql-fra1-09136-do-user-7651996-0.b.db.ondigitalocean.com',
+    port=25060,
+    database='st-onl'
 )
 cursor = db.cursor(dictionary=True)
 # Создали студента (student)
@@ -27,7 +27,8 @@ cursor.executemany(
 )
 
 # Создали группу (group) и определили своего студента туда
-cursor.execute('''
+cursor.execute(
+    '''
     INSERT INTO `groups` (title, start_date, end_date)
     VALUES ('group 215', 'oct 2026', 'dec 2026')
     '''
