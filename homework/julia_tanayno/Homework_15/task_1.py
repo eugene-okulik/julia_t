@@ -41,50 +41,39 @@ cursor.execute(
 )
 
 # Создали несколько учебных предметов (subjects)
-cursor.execute("INSERT INTO subjects (title) VALUES (%s)", ('Математика',))
-subject_1 = cursor.lastrowid
-cursor.execute("INSERT INTO subjects (title) VALUES (%s)", ('Геометрия',))
-subject_2 = cursor.lastrowid
+subjects = {}
+for title in ['Математика', 'Геометрия']:
+    cursor.execute(
+        "INSERT INTO subjects (title) VALUES (%s)",
+        (title,)
+    )
+    subjects[title] = cursor.lastrowid
 
 # Создали по два занятия для каждого предмета (lessons)
-cursor.execute(
-    "INSERT INTO lessons (title, subject_id) VALUES(%s, %s)",
-    ('Цифры', subject_1)
-)
-lesson_1 = cursor.lastrowid
-cursor.execute(
-    "INSERT INTO lessons (title, subject_id) VALUES(%s, %s)",
-    ('Числа', subject_1)
-)
-lesson_2 = cursor.lastrowid
-cursor.execute(
-    "INSERT INTO lessons (title, subject_id) VALUES(%s, %s)",
-    ('Катеты', subject_2)
-)
-lesson_3 = cursor.lastrowid
-cursor.execute(
-    "INSERT INTO lessons (title, subject_id) VALUES(%s, %s)",
-    ('Гипотенузы', subject_2)
-)
-lesson_4 = cursor.lastrowid
+lessons_data = [
+    ('Цифры', subjects['Математика']),
+    ('Числа', subjects['Математика']),
+    ('Катеты', subjects['Геометрия']),
+    ('Гипотенузы', subjects['Геометрия'])
+]
+lessons = {}
+
+for title, subject_id in lessons_data:
+    cursor.execute(
+        "INSERT INTO lessons (title, subject_id) VALUES (%s, %s)",
+        (title, subject_id)
+    )
+    lessons[title] = cursor.lastrowid
 
 # Поставили своему студенту оценки (marks) для всех созданных вами занятий
-cursor.execute(
-    "INSERT INTO marks (value, lesson_id, student_id) VALUES (%s, %s, %s)",
-    (5, lesson_1, student_id)
-)
-cursor.execute(
-    "INSERT INTO marks (value, lesson_id, student_id) VALUES (%s, %s, %s)",
-    (4, lesson_2, student_id)
-)
-cursor.execute(
-    "INSERT INTO marks (value, lesson_id, student_id) VALUES (%s, %s, %s)",
-    (4, lesson_3, student_id)
-)
-cursor.execute(
-    "INSERT INTO marks (value, lesson_id, student_id) VALUES (%s, %s, %s)",
-    (5, lesson_4, student_id)
-)
+values = [
+    (5, lessons['Цифры'], student_id),
+    (4, lessons['Числа'], student_id),
+    (4, lessons['Катеты'], student_id),
+    (5, lessons['Гипотенузы'], student_id),
+]
+query = "INSERT INTO marks (value, lesson_id, student_id) VALUES (%s, %s, %s)"
+cursor.executemany(query, values)
 
 db.commit()
 # Получили информацию из базы данных:
