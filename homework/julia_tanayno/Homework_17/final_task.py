@@ -18,7 +18,7 @@ elif os.path.isfile(args.folder):
 else:
     source_type = "error"
 
-# получить содержимое файла (файлов)
+# получить содержимое файла/файлов
 all_files_content = {}
 if source_type == "file":
     file_path = args.folder
@@ -28,10 +28,10 @@ if source_type == "file":
 
 elif source_type == "folder":
     for item in os.listdir(args.folder):
-# проверяем, что это файл (а не подпапка)
+    # проверяем, что это файл (а не подпапка)
         if os.path.isfile(os.path.join(args.folder, item)):
             file_path = os.path.join(args.folder, item)
-# открываем и читаем каждый файл
+            # открываем и читаем каждый файл
             with open(file_path, 'r') as file:
                 content = file.read()
             all_files_content[file_path] = content
@@ -99,7 +99,7 @@ for file_path, blocks in all_blocks.items():
             target_words = target.split()
 
             for i, word in enumerate(words):
-                if words[i : i + len(target_words)] == target_words:
+                if words[i:i + len(target_words)] == target_words:
                     start = max(0, i - 5)
                     end = i + len(target_words) + 5
                     context = words[start:end]
