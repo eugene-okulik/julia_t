@@ -4,7 +4,7 @@ import os
 # распознать аргументы, которые ввел пользователь
 parser = argparse.ArgumentParser()
 parser.add_argument('folder', help='full path to the folder')
-parser.add_argument( '-text', help='text to search')
+parser.add_argument('-text', help='text to search')
 args = parser.parse_args()
 
 # определить, что указал пользователь: файл или папку
@@ -28,7 +28,7 @@ if source_type == "file":
 
 elif source_type == "folder":
     for item in os.listdir(args.folder):
-    # проверяем, что это файл (а не подпапка)
+        # проверяем, что это файл (а не подпапка)
         if os.path.isfile(os.path.join(args.folder, item)):
             file_path = os.path.join(args.folder, item)
             # открываем и читаем каждый файл
