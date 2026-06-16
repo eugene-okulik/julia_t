@@ -61,7 +61,7 @@ for file_path, content in all_files_content.items():
                 blocks[current_time] = current_block
 
             current_time = line[:19]
-            current_block = []
+            current_block = [(line_number, line)]
 
         else:
             current_block.append((line_number, line))
@@ -87,8 +87,6 @@ for file_path, blocks in all_blocks.items():
                       .replace(".", " ")
                       .replace(":", " ")
                       .replace(";", " ")
-                      .replace("[", " ")
-                      .replace("]", " ")
         )
 
         # проверяем наличие слова/подстроки
