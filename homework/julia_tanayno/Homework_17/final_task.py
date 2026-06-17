@@ -79,28 +79,20 @@ for file_path, blocks in all_blocks.items():
     for time, block_lines in blocks.items():
 
         # объединяем блок в один текст
-        block_text = " ".join(line for _, line in block_lines).lower()
-
-        # убираем знаки препинания
-        clean_text = (
-            block_text.replace(",", " ")
-                      .replace(".", " ")
-                      .replace(":", " ")
-                      .replace(";", " ")
-        )
+        block_text = " ".join(line for _, line in block_lines)
 
         # проверяем наличие слова/подстроки
-        if target in clean_text:
+        if target in block_text.lower():
             found = True
 
-            words = clean_text.split()
+            words = block_text.lower().split()
             target_words = target.split()
 
             for i, word in enumerate(words):
                 if words[i:i + len(target_words)] == target_words:
                     start = max(0, i - 5)
                     end = i + len(target_words) + 5
-                    context = words[start:end]
+                    context = block_text.split()[start:end]
 
                     # находим номер строки
                     for line_number, line in block_lines:
