@@ -3,8 +3,7 @@ import requests
 
 def all_objects():
     response = requests.get('http://objapi.course.qa-practice.com/object').json()
-    assert len(response) != 0, 'list is empty'  #выведется ошибка, если assert упадет
-    print(response)
+    assert len(response) != 0, 'list is empty'
 
 
 def one_object():
@@ -13,13 +12,14 @@ def one_object():
     assert response['id'] == object_id
     clear(object_id)
 
+
 def post_object():
     body = {
         "data": {
             "color": "red",
             "size": "small"
         },
-          "name": "My_object"
+        "name": "My_object"
     }
 
     headers = {'Content-type': 'application/json'}
