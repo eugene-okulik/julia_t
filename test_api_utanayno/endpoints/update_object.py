@@ -14,7 +14,6 @@ class UpdateObject(Endpoint):
         self.json = self.response.json()
         return self.response
 
-
     @allure.step("Update object (patch, update the object partially)")
     def patch_object(self, object_id, body, headers=None):
         headers = headers if headers else self.headers
