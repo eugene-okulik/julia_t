@@ -13,11 +13,16 @@ class MemeUser(HttpUser):
 
     @task(3)
     def post_object(self):
-        self.client.post('/object', json={
-                              "data": {"color": "white","size": "big"},
-                              "name": "Locust_object"
-                                }
-                         )
+        self.client.post(
+            "/object",
+            json={
+                "data": {
+                    "color": "white",
+                    "size": "big"
+                },
+                  "name": "Locust_object"
+            }
+        )
 
     @task(3)
     def delete_object(self):
