@@ -20,7 +20,7 @@ class MemeUser(HttpUser):
                     "color": "white",
                     "size": "big"
                 },
-                  "name": "Locust_object"
+                "name": "Locust_object"
             }
         )
 
