@@ -1,8 +1,6 @@
 import pytest
 import allure
 
-from test_api_utanayno.conftest import delete_object_endpoint
-
 TEST_DATA = [
     {"data": {"color": "red", "size": "small"}, "name": "My_object"},
     {"data": {"color": "green", "size": "medium"}, "name": "My_object_2"},
