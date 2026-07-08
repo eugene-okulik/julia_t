@@ -8,11 +8,6 @@ class Endpoint:
     json = None
     headers = {"Content-type": "application/json"}
 
-    @allure.step('Delete object')
-    def delete_object(self, object_id=None):
-        object_id = object_id or self.json.get("id")
-        requests.delete(f"{self.url}/{object_id}")
-
     @allure.step('Check that response is 200')
     def check_status_is_200(self):
         assert self.response.status_code == 200, '200 is not 200'

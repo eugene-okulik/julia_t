@@ -41,10 +41,6 @@ def before_after_test():
     print('after test')
 
 
-def clear(object_id):
-    requests.delete(f"http://objapi.course.qa-practice.com/object/{object_id}")
-
-
 @pytest.fixture()
 def new_object():
     body = {
@@ -54,13 +50,9 @@ def new_object():
         "name": "My_object"
     }
 
-    headers = {"Content-type": "application/json"}
-    response = requests.post(
-        "http://objapi.course.qa-practice.com/object",
-        json=body,
-        headers=headers
-    )
+    post_object = PostObject()
+    post_object.create_new_object(body)
 
-    object_id = response.json()['id']
+    object_id = post_object.json['id']
     yield object_id
-    clear(object_id)
+    DeleteObject().delete_object(object_id)

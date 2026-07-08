@@ -1,6 +1,7 @@
 import pytest
 import allure
 
+from test_api_utanayno.conftest import delete_object_endpoint
 
 TEST_DATA = [
     {"data": {"color": "red", "size": "small"}, "name": "My_object"},
@@ -31,13 +32,13 @@ def test_get_one_object(get_object_endpoint, new_object, before_after_test):
 @allure.story("Post objects")
 @allure.title("Добавление объекта")
 @pytest.mark.parametrize("data", TEST_DATA)
-def test_post_object(create_object_endpoint, data, before_after_test):
+def test_post_object(create_object_endpoint, delete_object_endpoint, data, before_after_test):
     create_object_endpoint.create_new_object(body=data)
     create_object_endpoint.check_status_is_200()
     create_object_endpoint.check_object_name_is_correct(data["name"])
     create_object_endpoint.check_object_color_is_correct(data["data"]["color"])
     create_object_endpoint.check_object_size_is_correct(data["data"]["size"])
-    create_object_endpoint.delete_object()
+    delete_object_endpoint.delete_object(create_object_endpoint.json['id'])
 
 
 @allure.feature("Objects")
