@@ -64,4 +64,5 @@ def send_form():
         print(row.text)
     driver.quit()
 
+
 send_form()

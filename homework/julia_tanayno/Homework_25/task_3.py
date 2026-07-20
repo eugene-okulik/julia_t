@@ -13,6 +13,7 @@ def driver():
     chrome_driver.maximize_window()
     yield chrome_driver
 
+
 def test_check_language(driver):
     driver.get("https://www.qa-practice.com/elements/select/single_select")
     select = driver.find_element(By.ID, "id_choose_language")
@@ -22,6 +23,7 @@ def test_check_language(driver):
     driver.find_element(By.ID, "submit-id-submit").click()
     result_language = driver.find_element(By.ID, "result-text").text
     assert result_language == language_to_choose
+
 
 def test_words_hello_world(driver):
     driver.get("https://the-internet.herokuapp.com/dynamic_loading/2")
