@@ -1,0 +1,5 @@
+Ссылка на новый meme api проект:
+https://github.com/utanayno/meme_api_project
+
+HTTPS https://github.com/utanayno/meme_api_project.git
+SSH git@github.com:utanayno/meme_api_project.git
