@@ -34,7 +34,7 @@ def test_check_adding_item_to_cart_in_new_tab(driver):
     add_to_cart = WebDriverWait(driver, 10).until(
         EC.element_to_be_clickable((By.ID, "add_to_cart"))
     )
-    #add_to_cart.click() - почему-то не срабатывает
+    # add_to_cart.click() - почему-то не срабатывает
     ActionChains(driver).move_to_element(add_to_cart).click().perform()
 
     # ждем поп-ап
@@ -62,6 +62,7 @@ def test_check_adding_item_to_cart_in_new_tab(driver):
     )
     assert result.text.startswith("Customizable Desk")
 
+
 def test_check_adding_item_to_cart(driver):
     driver.get("http://testshop.qa-practice.com/")
     item = driver.find_element(By.XPATH, "//tbody/tr[1]/td[@data-name='Product'][1]")
@@ -78,6 +79,8 @@ def test_check_adding_item_to_cart(driver):
     WebDriverWait(driver, 6).until(
         EC.visibility_of_element_located((By.CSS_SELECTOR, "div.modal.o_legacy_dialog"))
     )
-    added_item = driver.find_element(By.CSS_SELECTOR, "tr.js_product.in_cart.main_product strong.product-name.product_display_name")
+    added_item = driver.find_element(
+        By.CSS_SELECTOR, "tr.js_product.in_cart.main_product strong.product-name.product_display_name"
+    )
 
     assert product_name in added_item.text
