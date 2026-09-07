@@ -8,6 +8,7 @@ def test_by_role(page: Page):
     page.get_by_role("textbox", name="password").fill('password')
     page.get_by_role("button").click()
 
+
 def test_fill_form(page: Page):
     page.goto("https://demoqa.com/automation-practice-form")
     page.get_by_placeholder("First Name").fill("Username")
