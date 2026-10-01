@@ -7,6 +7,7 @@ remove_from_cart_btn_loc = "[aria-label='Remove from cart']"
 plus_item_loc = "i.fa.fa-plus.position-relative.z-index-1"
 price_item_loc = "span[data-oe-type='monetary'] span[class='oe_currency_value']"
 
+
 class CartPage(BasePage):
     page_url = 'shop/cart'
 
@@ -14,11 +15,9 @@ class CartPage(BasePage):
         cart_title = self.find(cart_page_title_loc)
         expect(cart_title).to_have_text(text)
 
-
     def check_cart_alert(self, expected_cart_alert):
         empty_cart_alert = self.find(empty_cart_alert_loc)
         expect(empty_cart_alert).to_have_text(expected_cart_alert)
-
 
     def delete_item_from_cart(self):
         remove_from_cart_btn = self.find(remove_from_cart_btn_loc)

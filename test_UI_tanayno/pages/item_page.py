@@ -7,6 +7,7 @@ terms_title_loc = "h1"
 quantity_field_loc = "input.form-control.quantity"
 cart_button_loc = "#add_to_cart_wrap"
 
+
 class ItemPage(BasePage):
     page_url = 'shop/furn-9999-office-design-software-7?category=9'
 

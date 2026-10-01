@@ -17,14 +17,12 @@ class CatalogCatPage(BasePage):
         breadcrumb_title = self.find(breadcrumb_title_loc)
         expect(breadcrumb_title).to_have_text(text)
 
-
     def check_custom_legs(self, text):
         custom_legs_checkbox = self.find(custom_legs_checkbox_loc)
         custom_legs_checkbox.click()
 
         customized_item = self.page.get_by_text(text, exact=True)
         expect(customized_item).to_have_text(text)
-
 
     def add_to_cart(self):
         item = self.find(item_loc)

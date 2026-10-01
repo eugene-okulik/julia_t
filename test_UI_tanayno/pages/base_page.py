@@ -3,6 +3,7 @@ from playwright.sync_api import expect
 
 cart_quantity_loc = ".my_cart_quantity"
 
+
 class BasePage:
     base_url = "http://testshop.qa-practice.com/"
     # текущий урл для страницы
