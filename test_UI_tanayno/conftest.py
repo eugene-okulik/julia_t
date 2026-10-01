@@ -1,6 +1,5 @@
 from playwright.sync_api import BrowserContext
 import pytest
-from pytest_playwright.pytest_playwright import playwright
 
 from test_UI_tanayno.pages.cart_page import CartPage
 from test_UI_tanayno.pages.catalog_category_page import CatalogCatPage
@@ -27,4 +26,3 @@ def page(context: BrowserContext, playwright):
     page = context.new_page()
     page.set_viewport_size({"width": 1920, "height": 1080})
     return page
-
