@@ -19,7 +19,7 @@ n
 Repeat previous search in reverse direction:
 N
 
-#task1, part2
+#task2
 /dev/null - символьное устройство
 /dev/zero - символьное устройство
 /dev/sda - No such file or directory
